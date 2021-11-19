@@ -9,15 +9,15 @@
   <body>
     <div id="app"></div>
     <template id="cocktail_row">
-      <div class="py-16">
+      <div class="py-16 px-4 sm:px-0">
         <div class="container m-auto">
           <h1 class="text-5xl font-bold my-4"></h1>
-          <div id="ingredients" class="grid gap-4 grid-flow-col auto-cols-min"></div>
+          <div id="ingredients" class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"></div>
         </div>
       </div>
     </template>
     <template id="ingredient">
-      <div class="w-64">
+      <div class="">
         <input class="text-4xl py-4 w-full text-center" />
         <span></span>
       </div>
