@@ -21,31 +21,23 @@ const cocktailRowTemplate = document.querySelector<HTMLTemplateElement>("templat
 const ingredientTemplate = document.querySelector<HTMLTemplateElement>("template#ingredient")!;
 
 app.addEventListener("input", (event) => {
-  const ingredientName = (event.target! as HTMLElement).dataset["ingredient"]!
-  const recipeName = (event.target! as HTMLElement).dataset["recipe"]
-  const value = (event.target as HTMLInputElement).value;
-  if (value.endsWith(".")) {
+  const input = event.target! as HTMLInputElement
+  const ingredientName = input.dataset["ingredient"]!
+  const recipeName = input.dataset["recipe"]
+
+  if (input.value.endsWith(".")) {
     return
   }
-  const amount = parseFloat(value)
-
-  if (!amount) {
+  const newValue = parseFloat(input.value)
+  if (!newValue) {
     return
   }
 
   const recipe = recipes.filter((r) => r.name === recipeName)[0]!
-
-  const newRecipe = ratioRecipe(recipe, ingredientName, amount)
+  const newRecipe = ratioRecipe(recipe, ingredientName, newValue)
 
   setFields(newRecipe)
 })
-
-const setFields = (recipe: Recipe) => {
-  for (const ingredient of recipe.ingredients) {
-    const ingredientInput = document.querySelector<HTMLInputElement>(`[data-ingredient="${ingredient.name}"][data-recipe="${recipe.name}"]`)!
-    ingredientInput.value = ingredient.amount.toFixed(1).endsWith('0') ? ingredient.amount.toString() : ingredient.amount.toFixed(1);
-  }
-}
 
 app.addEventListener("click", (event) => {
   if (event.target instanceof HTMLButtonElement) {
@@ -55,18 +47,26 @@ app.addEventListener("click", (event) => {
     if (up || down) {
       const label = event.target.parentElement as HTMLLabelElement
       const input = label.querySelector<HTMLInputElement>("input")!
-      const recipeName = input.dataset["recipe"]
-      const amount = parseFloat(input.value)
       const ingredientName = input.dataset["ingredient"]!
+      const recipeName = input.dataset["recipe"]
+
+      const value = parseFloat(input.value)
+      const newValue = up ? Math.floor(value + 1) : Math.ceil(value - 1)
 
       const recipe = recipes.filter((r) => r.name === recipeName)[0]!
-      const newAmount = up ? Math.floor(amount + 1) : Math.ceil(amount - 1)
-      const newRecipe = ratioRecipe(recipe, ingredientName, newAmount)
+      const newRecipe = ratioRecipe(recipe, ingredientName, newValue)
 
       setFields(newRecipe)
     }
   }
 })
+
+const setFields = (recipe: Recipe) => {
+  for (const ingredient of recipe.ingredients) {
+    const ingredientInput = document.querySelector<HTMLInputElement>(`[data-ingredient="${ingredient.name}"][data-recipe="${recipe.name}"]`)!
+    ingredientInput.value = ingredient.amount.toFixed(1).endsWith('0') ? ingredient.amount.toString() : ingredient.amount.toFixed(1);
+  }
+}
 
 let i = 0;
 for (const recipe of recipes) {
