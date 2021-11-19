@@ -132,7 +132,7 @@ for (const recipe of recipes) {
   heading.textContent = recipe.name
   heading.classList.add(c.textDark)
   row.querySelector<HTMLElement>("div")!.classList.add(c.medium)
-  const directions = row.querySelector<HTMLSpanElement>("#directions")!
+  const directions = row.querySelector<HTMLSpanElement>(`[slot="directions"]`)!
   directions.textContent = recipe.directions
   directions.classList.add(c.textDark)
 
@@ -148,7 +148,7 @@ for (const recipe of recipes) {
     input.setAttribute("data-recipe", recipe.name)
     input.classList.add(c.light)
 
-    row.querySelector<HTMLElement>("#ingredients")!.appendChild(ingredientComponent);
+    row.querySelector<HTMLElement>(`[slot="ingredients"]`)!.appendChild(ingredientComponent);
   }
 
   app.appendChild(row);
