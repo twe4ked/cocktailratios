@@ -78,7 +78,11 @@ for (const [i, recipe] of recipes.entries()) {
   const heading = row.querySelector<HTMLHeadingElement>("h1")!
   heading.textContent = recipe.name
   heading.classList.add(c.textDark)
-  row.querySelector<HTMLElement>("div")!.classList.add(c.medium)
+  const id = recipe.name.toLowerCase().replace(/\W/g, "-").replace(/-+/g, "-")
+  row.querySelector<HTMLLinkElement>("a")!.href = `#${id}`
+  const div = row.querySelector<HTMLElement>("div")!
+  div.classList.add(c.medium)
+  div.id = id
   const directions = row.querySelector<HTMLSpanElement>(`[slot="directions"]`)!
   directions.textContent = recipe.directions
   directions.classList.add(c.textDark)
