@@ -43,7 +43,7 @@ const recipes = [
       { name: "Sweet Vermouth", amount: 1 },
       { name: "Campari", amount: 1 },
     ],
-    directions: "TODO"
+    directions: "Combine ingredients, stir, then pour into a glass with a large piece of ice. Garnish with a slice of orange and a dash of bitters."
   },
   {
     name: "Mezcal Margarita",
@@ -53,7 +53,7 @@ const recipes = [
       { name: "Cointreau", amount: 1 },
       { name: "Agave Syrup", amount: 0.1 },
     ],
-    directions: "TODO"
+    directions: "Combine ingredients, shake well, and strain into a chilled cocktail glass."
   },
 ]
 
@@ -104,6 +104,9 @@ for (const recipe of recipes) {
   heading.textContent = recipe.name
   heading.classList.add(c.textDark)
   row.querySelector<HTMLElement>("div")!.classList.add(c.medium)
+  const directions = row.querySelector<HTMLSpanElement>("#directions")!
+  directions.textContent = recipe.directions
+  directions.classList.add(c.textDark)
 
   for (const ingredient of recipe.ingredients) {
     var ingredientComponent = ingredientTemplate.content.cloneNode(true) as DocumentFragment
