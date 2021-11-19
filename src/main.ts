@@ -138,9 +138,9 @@ for (const recipe of recipes) {
 
   for (const ingredient of recipe.ingredients) {
     var ingredientComponent = ingredientTemplate.content.cloneNode(true) as DocumentFragment
-    const span = ingredientComponent.querySelector<HTMLSpanElement>("span")!
-    span.innerText = ingredient.name
-    span.classList.add(c.textDark)
+    const label = ingredientComponent.querySelector<HTMLLabelElement>("label")!
+    label.insertAdjacentText("beforeend", ingredient.name)
+    label.classList.add(c.textDark)
 
     const input = ingredientComponent.querySelector<HTMLInputElement>("input")!
     input.setAttribute("value", ingredient.amount.toString())
