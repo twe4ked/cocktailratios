@@ -55,6 +55,15 @@ const recipes = [
     ],
     directions: "Combine ingredients, shake well, and strain into a chilled cocktail glass."
   },
+  {
+    name: "Tommy's Margarita",
+    ingredients: [
+      { name: "Tequila", amount: 2 },
+      { name: "Lime juice", amount: 1 },
+      { name: "Agave syrup", amount: 0.5 },
+    ],
+    directions: "Combine, shake well, pour into a salt-rimmed glass with ice."
+  }
 ]
 
 // Write out the full color names so they don't get purged
