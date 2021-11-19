@@ -73,6 +73,14 @@ const recipes = [
       { name: "Lemon juice", amount: 0.25 },
     ],
     directions: "Combine ingredients, shake well, and strain into a chilled cocktail glass. Garnish with a flamed lemon peel."
+  },
+  {
+    name: "Gin & It",
+    ingredients: [
+      { name: "Gin", amount: 2 },
+      { name: "Sweet vermouth", amount: 1.5 },
+    ],
+    directions: "Combine ingredients and stir with ice. Strain into a chilled glass and garnish with a twist of orange and a dash of orange bitters."
   }
 ]
 
