@@ -7,14 +7,14 @@ const app = document.querySelector<HTMLDivElement>("#app")!
 // Write out the full color names so they don't get purged
 import colors from "tailwindcss/colors"
 const colorClasses = [
-  { light: "bg-red-50", medium: "bg-red-100", textDark: "text-red-900", textDarkHex: colors.red[400] },
-  { light: "bg-yellow-50", medium: "bg-yellow-100", textDark: "text-yellow-900", textDarkHex: colors.yellow[400] },
-  { light: "bg-green-50", medium: "bg-green-100", textDark: "text-green-900", textDarkHex: colors.green[400] },
-  { light: "bg-blue-50", medium: "bg-blue-100", textDark: "text-blue-900", textDarkHex: colors.blue[400] },
-  { light: "bg-indigo-50", medium: "bg-indigo-100", textDark: "text-indigo-900", textDarkHex: colors.indigo[400] },
-  { light: "bg-purple-50", medium: "bg-purple-100", textDark: "text-purple-900", textDarkHex: colors.purple[400] },
-  { light: "bg-pink-50", medium: "bg-pink-100", textDark: "text-pink-900", textDarkHex: colors.pink[400] },
-  { light: "bg-gray-50", medium: "bg-gray-100", textDark: "text-gray-900", textDarkHex: colors.gray[400] },
+  { light: "bg-red-50", medium: "bg-red-100", textDark: "text-red-900", button: colors.red[400] },
+  { light: "bg-yellow-50", medium: "bg-yellow-100", textDark: "text-yellow-900", button: colors.yellow[400] },
+  { light: "bg-green-50", medium: "bg-green-100", textDark: "text-green-900", button: colors.green[400] },
+  { light: "bg-blue-50", medium: "bg-blue-100", textDark: "text-blue-900", button: colors.blue[400] },
+  { light: "bg-indigo-50", medium: "bg-indigo-100", textDark: "text-indigo-900", button: colors.indigo[400] },
+  { light: "bg-purple-50", medium: "bg-purple-100", textDark: "text-purple-900", button: colors.purple[400] },
+  { light: "bg-pink-50", medium: "bg-pink-100", textDark: "text-pink-900", button: colors.pink[400] },
+  { light: "bg-gray-50", medium: "bg-gray-100", textDark: "text-gray-900", button: colors.gray[400] },
 ]
 
 const cocktailRowTemplate = document.querySelector<HTMLTemplateElement>("template#cocktail_row")!;
@@ -93,7 +93,7 @@ for (const [i, recipe] of recipes.entries()) {
 
     const paths = ingredientComponent.querySelectorAll<HTMLElement>("button svg path")!
     for (const p of Array.from(paths)) {
-      p.setAttribute("fill", c.textDarkHex)
+      p.setAttribute("fill", c.button)
     }
 
     const input = ingredientComponent.querySelector<HTMLInputElement>("input")!
