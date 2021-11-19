@@ -52,6 +52,9 @@ app.addEventListener("click", (event) => {
 
       const value = parseFloat(input.value)
       const newValue = up ? Math.floor(value + 1) : Math.ceil(value - 1)
+      if (newValue <= 0) {
+        return
+      }
 
       const recipe = recipes.filter((r) => r.name === recipeName)[0]!
       const newRecipe = ratioRecipe(recipe, ingredientName, newValue)
