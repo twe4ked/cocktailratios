@@ -67,7 +67,7 @@ app.addEventListener("click", (event) => {
 const setFields = (recipe: Recipe) => {
   for (const ingredient of recipe.ingredients) {
     const ingredientInput = document.querySelector<HTMLInputElement>(`[data-ingredient="${ingredient.name}"][data-recipe="${recipe.name}"]`)!
-    ingredientInput.value = ingredient.amount.toFixed(1).endsWith('0') ? ingredient.amount.toString() : ingredient.amount.toFixed(1);
+    ingredientInput.value = ingredient.amount.toFixed(2).endsWith('0') ? ingredient.amount.toString() : ingredient.amount.toFixed(2);
   }
 }
 
