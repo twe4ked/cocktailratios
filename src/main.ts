@@ -63,6 +63,16 @@ const recipes = [
       { name: "Agave syrup", amount: 0.5 },
     ],
     directions: "Combine, shake well, pour into a salt-rimmed glass with ice."
+  },
+  {
+    name: "Aviation",
+    ingredients: [
+      { name: "Gin", amount: 2 },
+      { name: "Maraschino liqueur", amount: 0.25 },
+      { name: "Crème de violette liqueur", amount: 0.25 },
+      { name: "Lemon juice", amount: 0.25 },
+    ],
+    directions: "Combine ingredients, shake well, and strain into a chilled cocktail glass. Garnish with a flamed lemon peel."
   }
 ]
 
