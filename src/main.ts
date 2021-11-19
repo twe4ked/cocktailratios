@@ -59,14 +59,14 @@ const recipes = [
 
 // Write out the full color names so they don't get purged
 const colors = [
-  ["bg-red-50", "bg-red-100"],
-  ["bg-yellow-50", "bg-yellow-100"],
-  ["bg-green-50", "bg-green-100"],
-  ["bg-blue-50", "bg-blue-100"],
-  ["bg-indigo-50", "bg-indigo-100"],
-  ["bg-purple-50", "bg-purple-100"],
-  ["bg-pink-50", "bg-pink-100"],
-  ["bg-gray-50", "bg-gray-100"],
+  { light: "bg-red-50", medium: "bg-red-100", textDark: "text-red-900" },
+  { light: "bg-yellow-50", medium: "bg-yellow-100", textDark: "text-yellow-900" },
+  { light: "bg-green-50", medium: "bg-green-100", textDark: "text-green-900" },
+  { light: "bg-blue-50", medium: "bg-blue-100", textDark: "text-blue-900" },
+  { light: "bg-indigo-50", medium: "bg-indigo-100", textDark: "text-indigo-900" },
+  { light: "bg-purple-50", medium: "bg-purple-100", textDark: "text-purple-900" },
+  { light: "bg-pink-50", medium: "bg-pink-100", textDark: "text-pink-900" },
+  { light: "bg-gray-50", medium: "bg-gray-100", textDark: "text-gray-900" },
 ]
 
 const cocktailRowTemplate = document.querySelector<HTMLTemplateElement>("template#cocktail_row")!;
@@ -96,18 +96,22 @@ for (const recipe of recipes) {
   let c = colors[i % 8]
 
   var row = cocktailRowTemplate.content.cloneNode(true) as DocumentFragment
-  row.querySelector<HTMLHeadingElement>("h1")!.textContent = recipe.name
-  row.querySelector<HTMLElement>("div")!.classList.add(c[1])
+  const heading = row.querySelector<HTMLHeadingElement>("h1")!
+  heading.textContent = recipe.name
+  heading.classList.add(c.textDark)
+  row.querySelector<HTMLElement>("div")!.classList.add(c.medium)
 
   for (const ingredient of recipe.ingredients) {
     var ingredientComponent = ingredientTemplate.content.cloneNode(true) as DocumentFragment
-    ingredientComponent.querySelector<HTMLSpanElement>("span")!.innerText = ingredient.name
+    const span = ingredientComponent.querySelector<HTMLSpanElement>("span")!
+    span.innerText = ingredient.name
+    span.classList.add(c.textDark)
 
     const input = ingredientComponent.querySelector<HTMLInputElement>("input")!
     input.setAttribute("value", ingredient.amount.toString())
     input.setAttribute("data-ingredient", ingredient.name)
     input.setAttribute("data-recipe", recipe.name)
-    input.classList.add(c[0])
+    input.classList.add(c.light)
 
     row.querySelector<HTMLElement>("#ingredients")!.appendChild(ingredientComponent);
   }
