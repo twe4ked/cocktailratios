@@ -68,8 +68,7 @@ const setFields = (recipe: Recipe) => {
   }
 }
 
-let i = 0;
-for (const recipe of recipes) {
+for (const [i, recipe] of recipes.entries()) {
   let c = colorClasses[i % 8]
 
   const row = cocktailRowTemplate.content.cloneNode(true) as DocumentFragment
@@ -103,5 +102,4 @@ for (const recipe of recipes) {
   }
 
   app.appendChild(row);
-  i += 1
 }
