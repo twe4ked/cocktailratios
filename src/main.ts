@@ -82,7 +82,7 @@ const recipes = [
     ],
     directions: "Combine ingredients and stir with ice. Strain into a chilled glass and garnish with a twist of orange and a dash of orange bitters."
   }
-]
+].sort(() => 0.5 - Math.random());
 
 // Write out the full color names so they don't get purged
 const colors = [
