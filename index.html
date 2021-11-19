@@ -18,9 +18,17 @@
       </div>
     </template>
     <template id="ingredient">
-      <div class="">
+      <div>
         <label class="text-lg font-bold">
-          <input class="text-4xl py-4 w-full text-center" />
+          <div class="flex flex-row">
+            <button class="up-button px-3">
+              <svg class="pointer-events-none" width="16" height="14" viewBox="0 0 16 14"><path d="M13.86 12L0 12L6.93 0z" /></svg>
+            </button>
+            <input class="text-4xl py-4 w-full text-center bg-transparent" />
+            <button class="down-button px-3">
+              <svg class="pointer-events-none" width="16" height="14" viewBox="0 0 16 14"><path d="M6.93 12L0 0L13.86 0z" /></svg>
+            </button>
+          </div>
         </label>
       </div>
     </template>

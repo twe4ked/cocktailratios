@@ -86,15 +86,16 @@ const recipes: Recipe[] = [
 ].sort(() => 0.5 - Math.random());
 
 // Write out the full color names so they don't get purged
-const colors = [
-  { light: "bg-red-50", medium: "bg-red-100", textDark: "text-red-900" },
-  { light: "bg-yellow-50", medium: "bg-yellow-100", textDark: "text-yellow-900" },
-  { light: "bg-green-50", medium: "bg-green-100", textDark: "text-green-900" },
-  { light: "bg-blue-50", medium: "bg-blue-100", textDark: "text-blue-900" },
-  { light: "bg-indigo-50", medium: "bg-indigo-100", textDark: "text-indigo-900" },
-  { light: "bg-purple-50", medium: "bg-purple-100", textDark: "text-purple-900" },
-  { light: "bg-pink-50", medium: "bg-pink-100", textDark: "text-pink-900" },
-  { light: "bg-gray-50", medium: "bg-gray-100", textDark: "text-gray-900" },
+import colors from "tailwindcss/colors"
+const colorClasses = [
+  { light: "bg-red-50", medium: "bg-red-100", textDark: "text-red-900", textDarkHex: colors.red[400] },
+  { light: "bg-yellow-50", medium: "bg-yellow-100", textDark: "text-yellow-900", textDarkHex: colors.yellow[400] },
+  { light: "bg-green-50", medium: "bg-green-100", textDark: "text-green-900", textDarkHex: colors.green[400] },
+  { light: "bg-blue-50", medium: "bg-blue-100", textDark: "text-blue-900", textDarkHex: colors.blue[400] },
+  { light: "bg-indigo-50", medium: "bg-indigo-100", textDark: "text-indigo-900", textDarkHex: colors.indigo[400] },
+  { light: "bg-purple-50", medium: "bg-purple-100", textDark: "text-purple-900", textDarkHex: colors.purple[400] },
+  { light: "bg-pink-50", medium: "bg-pink-100", textDark: "text-pink-900", textDarkHex: colors.pink[400] },
+  { light: "bg-gray-50", medium: "bg-gray-100", textDark: "text-gray-900", textDarkHex: colors.gray[400] },
 ]
 
 const cocktailRowTemplate = document.querySelector<HTMLTemplateElement>("template#cocktail_row")!;
@@ -117,15 +118,40 @@ app.addEventListener("input", (event) => {
 
   const newRecipe = ratioRecipe(recipe, ingredientName, amount)
 
-  for (const ingredient of newRecipe.ingredients) {
+  setFields(newRecipe)
+})
+
+const setFields = (recipe: Recipe) => {
+  for (const ingredient of recipe.ingredients) {
     const ingredientInput = document.querySelector<HTMLInputElement>(`[data-ingredient="${ingredient.name}"][data-recipe="${recipe.name}"]`)!
     ingredientInput.value = ingredient.amount.toFixed(1).endsWith('0') ? ingredient.amount.toString() : ingredient.amount.toFixed(1);
+  }
+}
+
+app.addEventListener("click", (event) => {
+  if (event.target instanceof HTMLButtonElement) {
+    const up = event.target.classList.contains("up-button")
+    const down = event.target.classList.contains("down-button")
+
+    if (up || down) {
+      const label = event.target.parentElement as HTMLLabelElement
+      const input = label.querySelector<HTMLInputElement>("input")!
+      const recipeName = input.dataset["recipe"]
+      const amount = parseFloat(input.value)
+      const ingredientName = input.dataset["ingredient"]!
+
+      const recipe = recipes.filter((r) => r.name === recipeName)[0]!
+      const newAmount = up ? Math.floor(amount + 1) : Math.ceil(amount - 1)
+      const newRecipe = ratioRecipe(recipe, ingredientName, newAmount)
+
+      setFields(newRecipe)
+    }
   }
 })
 
 let i = 0;
 for (const recipe of recipes) {
-  let c = colors[i % 8]
+  let c = colorClasses[i % 8]
 
   const row = cocktailRowTemplate.content.cloneNode(true) as DocumentFragment
   const heading = row.querySelector<HTMLHeadingElement>("h1")!
@@ -138,15 +164,21 @@ for (const recipe of recipes) {
 
   for (const ingredient of recipe.ingredients) {
     const ingredientComponent = ingredientTemplate.content.cloneNode(true) as DocumentFragment
+
     const label = ingredientComponent.querySelector<HTMLLabelElement>("label")!
     label.insertAdjacentText("beforeend", ingredient.name)
     label.classList.add(c.textDark)
+    label.querySelector<HTMLLabelElement>("div")!.classList.add(c.light)
+
+    const paths = ingredientComponent.querySelectorAll<HTMLElement>("button svg path")!
+    for (const p of Array.from(paths)) {
+      p.setAttribute("fill", c.textDarkHex)
+    }
 
     const input = ingredientComponent.querySelector<HTMLInputElement>("input")!
     input.setAttribute("value", ingredient.amount.toString())
     input.setAttribute("data-ingredient", ingredient.name)
     input.setAttribute("data-recipe", recipe.name)
-    input.classList.add(c.light)
 
     row.querySelector<HTMLElement>(`[slot="ingredients"]`)!.appendChild(ingredientComponent);
   }
