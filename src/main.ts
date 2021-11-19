@@ -127,7 +127,7 @@ let i = 0;
 for (const recipe of recipes) {
   let c = colors[i % 8]
 
-  var row = cocktailRowTemplate.content.cloneNode(true) as DocumentFragment
+  const row = cocktailRowTemplate.content.cloneNode(true) as DocumentFragment
   const heading = row.querySelector<HTMLHeadingElement>("h1")!
   heading.textContent = recipe.name
   heading.classList.add(c.textDark)
@@ -137,7 +137,7 @@ for (const recipe of recipes) {
   directions.classList.add(c.textDark)
 
   for (const ingredient of recipe.ingredients) {
-    var ingredientComponent = ingredientTemplate.content.cloneNode(true) as DocumentFragment
+    const ingredientComponent = ingredientTemplate.content.cloneNode(true) as DocumentFragment
     const label = ingredientComponent.querySelector<HTMLLabelElement>("label")!
     label.insertAdjacentText("beforeend", ingredient.name)
     label.classList.add(c.textDark)
