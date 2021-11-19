@@ -75,7 +75,11 @@ const ingredientTemplate = document.querySelector<HTMLTemplateElement>("template
 app.addEventListener("input", (event) => {
   const ingredientName = (event.target! as HTMLElement).dataset["ingredient"]!
   const recipeName = (event.target! as HTMLElement).dataset["recipe"]
-  const amount = parseFloat((event.target as HTMLInputElement).value)
+  const value = (event.target as HTMLInputElement).value;
+  if (value.endsWith(".")) {
+    return
+  }
+  const amount = parseFloat(value)
 
   if (!amount) {
     return
