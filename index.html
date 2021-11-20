@@ -9,10 +9,10 @@
   <body>
     <div id="app"></div>
     <template id="cocktail_row">
-      <div class="py-16 px-4 sm:px-0">
+      <div slot="cocktail-row" class="py-16 px-4 sm:px-0">
         <div class="container m-auto">
-          <a>
-            <h1 class="text-5xl font-bold my-4"></h1>
+          <a slot="link">
+            <h1 slot="heading" class="text-5xl font-bold my-4"></h1>
           </a>
           <p slot="directions" class="my-4"></p>
           <div slot="ingredients" class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"></div>
@@ -21,11 +21,11 @@
     </template>
     <template id="ingredient">
       <div>
-        <label class="text-lg font-bold">
-          <div class="flex flex-row">
-            <button class="down px-4">-</button>
-            <input class="text-4xl py-4 w-full text-center bg-transparent" />
-            <button class="up px-4">+</button>
+        <label slot="label" class="text-lg font-bold">
+          <div slot="button-wrapper" class="flex flex-row">
+            <button slot="down" class="px-4">-</button>
+            <input slot="input" class="text-4xl py-4 w-full text-center bg-transparent" />
+            <button slot="up" class="px-4">+</button>
           </div>
         </label>
       </div>

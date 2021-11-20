@@ -70,12 +70,12 @@ for (const [i, recipe] of recipes.entries()) {
   let c = colorClasses[i % 8]
 
   const row = cocktailRowTemplate.content.cloneNode(true) as DocumentFragment
-  const heading = row.querySelector<HTMLHeadingElement>("h1")!
+  const heading = slot(row, "heading")
   heading.textContent = recipe.name
   heading.classList.add(c.textDark)
   const id = recipe.name.toLowerCase().replace(/\W/g, "-").replace(/-+/g, "-")
-  row.querySelector<HTMLLinkElement>("a")!.href = `#${id}`
-  const div = row.querySelector<HTMLElement>("div")!
+  slot<HTMLLinkElement>(row, "link").href = `#${id}`
+  const div = slot(row, "cocktail-row")
   div.classList.add(c.medium)
   div.id = id
   const directions = slot(row, "directions")
@@ -85,15 +85,16 @@ for (const [i, recipe] of recipes.entries()) {
   for (const ingredient of recipe.ingredients) {
     const ingredientComponent = ingredientTemplate.content.cloneNode(true) as DocumentFragment
 
-    const label = ingredientComponent.querySelector<HTMLLabelElement>("label")!
+    const label = slot(ingredientComponent, "label")!
     label.insertAdjacentText("beforeend", ingredient.name)
     label.classList.add(c.textDark)
-    label.querySelector<HTMLLabelElement>("div")!.classList.add(c.light)
 
-    ingredientComponent.querySelector<HTMLButtonElement>("button.up")!.onclick = (e) => changeAmount(e, true)
-    ingredientComponent.querySelector<HTMLButtonElement>("button.down")!.onclick = (e) => changeAmount(e, false)
+    slot(ingredientComponent, "button-wrapper").classList.add(c.light)
 
-    const input = ingredientComponent.querySelector<HTMLInputElement>("input")!
+    slot<HTMLButtonElement>(ingredientComponent, "up").onclick = (e) => changeAmount(e, true)
+    slot<HTMLButtonElement>(ingredientComponent, "down").onclick = (e) => changeAmount(e, false)
+
+    const input = slot(ingredientComponent, "input")
     input.setAttribute("value", ingredient.amount.toString())
     input.setAttribute("data-ingredient", ingredient.name)
     input.setAttribute("data-recipe", recipe.name)
