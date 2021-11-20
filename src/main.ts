@@ -71,7 +71,7 @@ for (const [i, recipe] of recipes.entries()) {
 
   const row = cocktailRowTemplate.content.cloneNode(true) as DocumentFragment
   const heading = slot(row, "heading")
-  heading.textContent = recipe.name
+  heading.insertAdjacentText("beforeend", recipe.name)
   heading.classList.add(c.textDark)
   const id = recipe.name.toLowerCase().replace(/\W/g, "-").replace(/-+/g, "-")
   slot<HTMLLinkElement>(row, "link").href = `#${id}`
