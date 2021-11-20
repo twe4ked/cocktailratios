@@ -57,7 +57,7 @@ const changeAmount = (event: MouseEvent, isUp: boolean) => {
 
 const setFields = (recipe: Recipe) => {
   for (const ingredient of recipe.ingredients) {
-    const ingredientInput = document.querySelector<HTMLInputElement>(`[data-ingredient="${ingredient.name}"][data-recipe="${recipe.name}"]`)!
+    const ingredientInput = app.querySelector<HTMLInputElement>(`[data-ingredient="${ingredient.name}"][data-recipe="${recipe.name}"]`)!
     ingredientInput.value = ingredient.amount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })
   }
 }
