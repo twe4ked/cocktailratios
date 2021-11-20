@@ -70,8 +70,8 @@ export const recipes: Recipe[] = [
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Tequila", amount: 2 },
-      { name: "Lime juice", amount: 1 },
-      { name: "Agave syrup", amount: 0.5 },
+      { name: "Lime Juice", amount: 1 },
+      { name: "Agave Syrup", amount: 0.5 },
     ],
   },
   {
@@ -81,9 +81,9 @@ export const recipes: Recipe[] = [
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Gin", amount: 2 },
-      { name: "Maraschino liqueur", amount: 0.25 },
-      { name: "Crème de violette liqueur", amount: 0.25 },
-      { name: "Lemon juice", amount: 0.25 },
+      { name: "Maraschino Liqueur", amount: 0.25 },
+      { name: "Crème De Violette Liqueur", amount: 0.25 },
+      { name: "Lemon Juice", amount: 0.25 },
     ],
   },
   {
@@ -93,7 +93,7 @@ export const recipes: Recipe[] = [
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Gin", amount: 1.5 },
-      { name: "Sweet vermouth", amount: 0.75 },
+      { name: "Sweet Vermouth", amount: 0.75 },
     ],
   },
   {
@@ -103,9 +103,9 @@ export const recipes: Recipe[] = [
     ingredients: [
       { name: "Serves", amount: 3 },
       { name: "Whiskey", amount: 6 },
-      { name: "Lemon juice", amount: 2.25 },
-      { name: "Simple syrup", amount: 2.25 },
-      { name: "Egg (worth of) white", amount: 1 },
+      { name: "Lemon Juice", amount: 2.25 },
+      { name: "Simple Syrup", amount: 2.25 },
+      { name: "Egg (worth of) White", amount: 1 },
     ],
   },
   {
@@ -115,8 +115,8 @@ export const recipes: Recipe[] = [
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Gin", amount: 2 },
-      { name: "Lime juice", amount: 0.75 },
-      { name: "Simple syrup", amount: 0.75 },
+      { name: "Lime Juice", amount: 0.75 },
+      { name: "Simple Syrup", amount: 0.75 },
     ],
   },
   {
@@ -127,7 +127,7 @@ export const recipes: Recipe[] = [
       { name: "Serves", amount: 1 },
       { name: "Prosecco", amount: 3 },
       { name: "Aperol", amount: 2 },
-      { name: "Soda water", amount: 1 },
+      { name: "Soda Water", amount: 1 },
     ],
   },
 ].sort((a, b) => a.name.localeCompare(b.name))
