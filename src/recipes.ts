@@ -1,7 +1,7 @@
 import colors from "tailwindcss/colors"
 import type { TailwindColorGroup } from "tailwindcss/tailwind-config"
 
-type Ingredient = {
+export type Ingredient = {
   name: string,
   amount: number
 }

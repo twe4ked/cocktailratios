@@ -1,6 +1,6 @@
 import "./style.css"
 
-import { Recipe, ratioRecipe, recipes } from "./recipes"
+import { Recipe, Ingredient, ratioRecipe, recipes } from "./recipes"
 
 const app = document.querySelector<HTMLDivElement>("#app")!
 
@@ -58,7 +58,7 @@ const slot = <T extends Element>(d: DocumentFragment, name: string): T => {
   return d.querySelector<T>(`[slot="${name}"]`)!
 }
 
-for (const recipe of recipes) {
+const renderRecipe = (recipe: Recipe): Node => {
   const row = cocktailRowTemplate.content.cloneNode(true) as DocumentFragment
   const heading = slot<HTMLElement>(row, "heading")
   heading.insertAdjacentText("beforeend", recipe.name)
@@ -73,24 +73,36 @@ for (const recipe of recipes) {
   directions.style.color = recipe.color[900]
 
   for (const ingredient of recipe.ingredients) {
-    const ingredientComponent = ingredientTemplate.content.cloneNode(true) as DocumentFragment
-
-    const label = slot<HTMLElement>(ingredientComponent, "label")!
-    label.insertAdjacentText("beforeend", ingredient.name)
-    label.style.color = recipe.color[900]
-
-    slot<HTMLElement>(ingredientComponent, "button-wrapper").style.backgroundColor = recipe.color[50]
-
-    slot<HTMLButtonElement>(ingredientComponent, "up").onclick = (e) => changeAmount(e, true)
-    slot<HTMLButtonElement>(ingredientComponent, "down").onclick = (e) => changeAmount(e, false)
-
-    const input = slot(ingredientComponent, "input")
-    input.setAttribute("value", ingredient.amount.toString())
-    input.setAttribute("data-ingredient", ingredient.name)
-    input.setAttribute("data-recipe", recipe.name)
-
-    slot(row, "ingredients").appendChild(ingredientComponent);
+    slot(row, "ingredients").appendChild(
+      renderIngredient(recipe, ingredient)
+    );
   }
 
-  app.appendChild(row);
+  return row
+}
+
+const renderIngredient = (recipe: Recipe, ingredient: Ingredient): Node => {
+  const ingredientComponent = ingredientTemplate.content.cloneNode(true) as DocumentFragment
+
+  const label = slot<HTMLElement>(ingredientComponent, "label")!
+  label.insertAdjacentText("beforeend", ingredient.name)
+  label.style.color = recipe.color[900]
+
+  slot<HTMLElement>(ingredientComponent, "button-wrapper").style.backgroundColor = recipe.color[50]
+
+  slot<HTMLButtonElement>(ingredientComponent, "up").onclick = (e) => changeAmount(e, true)
+  slot<HTMLButtonElement>(ingredientComponent, "down").onclick = (e) => changeAmount(e, false)
+
+  const input = slot(ingredientComponent, "input")
+  input.setAttribute("value", ingredient.amount.toString())
+  input.setAttribute("data-ingredient", ingredient.name)
+  input.setAttribute("data-recipe", recipe.name)
+
+  return ingredientComponent
+}
+
+for (const recipe of recipes) {
+  app.appendChild(
+    renderRecipe(recipe)
+  );
 }
