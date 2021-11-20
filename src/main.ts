@@ -23,7 +23,7 @@ const ingredientTemplate = document.querySelector<HTMLTemplateElement>("template
 app.addEventListener("input", (event) => {
   const input = event.target! as HTMLInputElement
   const ingredientName = input.dataset["ingredient"]!
-  const recipeName = input.dataset["recipe"]
+  const recipeName = input.dataset["recipe"]!
 
   if (input.value.endsWith(".")) {
     return
@@ -33,8 +33,7 @@ app.addEventListener("input", (event) => {
     return
   }
 
-  const recipe = recipes.filter((r) => r.name === recipeName)[0]!
-  const newRecipe = ratioRecipe(recipe, ingredientName, newValue)
+  const newRecipe = ratioRecipe(recipeName, ingredientName, newValue)
 
   setFields(newRecipe)
 })
@@ -44,7 +43,7 @@ const changeAmount = (event: MouseEvent, isUp: boolean) => {
   const label = button.parentElement as HTMLLabelElement
   const input = label.querySelector<HTMLInputElement>("input")!
   const ingredientName = input.dataset["ingredient"]!
-  const recipeName = input.dataset["recipe"]
+  const recipeName = input.dataset["recipe"]!
 
   const value = parseFloat(input.value)
   const newValue = isUp ? Math.floor(value + 1) : Math.ceil(value - 1)
@@ -52,8 +51,7 @@ const changeAmount = (event: MouseEvent, isUp: boolean) => {
     return
   }
 
-  const recipe = recipes.filter((r) => r.name === recipeName)[0]!
-  const newRecipe = ratioRecipe(recipe, ingredientName, newValue)
+  const newRecipe = ratioRecipe(recipeName, ingredientName, newValue)
 
   setFields(newRecipe)
 }

@@ -9,7 +9,8 @@ export type Recipe = {
   ingredients: Ingredient[],
 }
 
-export function ratioRecipe(recipe: Recipe, name: string, amount: number): Recipe {
+export const ratioRecipe = (recipeName: string, name: string, amount: number): Recipe => {
+  const recipe = recipes.filter((r) => r.name === recipeName)[0]!
   const keyIngredient = recipe.ingredients.filter((ingredient) => ingredient.name === name)[0]!
 
   return {
