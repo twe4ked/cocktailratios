@@ -117,4 +117,4 @@ export const recipes: Recipe[] = [
       { name: "Soda water", amount: 1 },
     ],
   },
-].sort(() => 0.5 - Math.random());
+].sort((a, b) => a.name.localeCompare(b.name))
