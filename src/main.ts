@@ -4,18 +4,6 @@ import { Recipe, ratioRecipe, recipes } from "./recipes"
 
 const app = document.querySelector<HTMLDivElement>("#app")!
 
-// Write out the full color names so they don't get purged
-const colorClasses = [
-  { light: "bg-red-50", medium: "bg-red-100", textDark: "text-red-900" },
-  { light: "bg-yellow-50", medium: "bg-yellow-100", textDark: "text-yellow-900" },
-  { light: "bg-green-50", medium: "bg-green-100", textDark: "text-green-900" },
-  { light: "bg-blue-50", medium: "bg-blue-100", textDark: "text-blue-900" },
-  { light: "bg-indigo-50", medium: "bg-indigo-100", textDark: "text-indigo-900" },
-  { light: "bg-purple-50", medium: "bg-purple-100", textDark: "text-purple-900" },
-  { light: "bg-pink-50", medium: "bg-pink-100", textDark: "text-pink-900" },
-  { light: "bg-gray-50", medium: "bg-gray-100", textDark: "text-gray-900" },
-]
-
 const cocktailRowTemplate = document.querySelector<HTMLTemplateElement>("template#cocktail_row")!;
 const ingredientTemplate = document.querySelector<HTMLTemplateElement>("template#ingredient")!;
 const headerTemplate = document.querySelector<HTMLTemplateElement>("template#header")!;
@@ -70,30 +58,28 @@ const slot = <T extends Element>(d: DocumentFragment, name: string): T => {
   return d.querySelector<T>(`[slot="${name}"]`)!
 }
 
-for (const [i, recipe] of recipes.entries()) {
-  let c = colorClasses[i % 8]
-
+for (const recipe of recipes) {
   const row = cocktailRowTemplate.content.cloneNode(true) as DocumentFragment
-  const heading = slot(row, "heading")
+  const heading = slot<HTMLElement>(row, "heading")
   heading.insertAdjacentText("beforeend", recipe.name)
-  heading.classList.add(c.textDark)
+  heading.style.color = recipe.color[900]
   const id = recipe.name.toLowerCase().replace(/\W/g, "-").replace(/-+/g, "-")
   slot<HTMLLinkElement>(row, "link").href = `#${id}`
-  const div = slot(row, "cocktail-row")
-  div.classList.add(c.medium)
+  const div = slot<HTMLElement>(row, "cocktail-row")
+  div.style.backgroundColor = recipe.color[100]
   div.id = id
-  const directions = slot(row, "directions")
+  const directions = slot<HTMLElement>(row, "directions")
   directions.textContent = recipe.directions
-  directions.classList.add(c.textDark)
+  directions.style.color = recipe.color[900]
 
   for (const ingredient of recipe.ingredients) {
     const ingredientComponent = ingredientTemplate.content.cloneNode(true) as DocumentFragment
 
-    const label = slot(ingredientComponent, "label")!
+    const label = slot<HTMLElement>(ingredientComponent, "label")!
     label.insertAdjacentText("beforeend", ingredient.name)
-    label.classList.add(c.textDark)
+    label.style.color = recipe.color[900]
 
-    slot(ingredientComponent, "button-wrapper").classList.add(c.light)
+    slot<HTMLElement>(ingredientComponent, "button-wrapper").style.backgroundColor = recipe.color[50]
 
     slot<HTMLButtonElement>(ingredientComponent, "up").onclick = (e) => changeAmount(e, true)
     slot<HTMLButtonElement>(ingredientComponent, "down").onclick = (e) => changeAmount(e, false)
