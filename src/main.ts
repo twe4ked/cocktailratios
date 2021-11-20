@@ -5,16 +5,15 @@ import { Recipe, ratioRecipe, recipes } from "./recipes"
 const app = document.querySelector<HTMLDivElement>("#app")!
 
 // Write out the full color names so they don't get purged
-import colors from "tailwindcss/colors"
 const colorClasses = [
-  { light: "bg-red-50", medium: "bg-red-100", textDark: "text-red-900", button: colors.red[400] },
-  { light: "bg-yellow-50", medium: "bg-yellow-100", textDark: "text-yellow-900", button: colors.yellow[400] },
-  { light: "bg-green-50", medium: "bg-green-100", textDark: "text-green-900", button: colors.green[400] },
-  { light: "bg-blue-50", medium: "bg-blue-100", textDark: "text-blue-900", button: colors.blue[400] },
-  { light: "bg-indigo-50", medium: "bg-indigo-100", textDark: "text-indigo-900", button: colors.indigo[400] },
-  { light: "bg-purple-50", medium: "bg-purple-100", textDark: "text-purple-900", button: colors.purple[400] },
-  { light: "bg-pink-50", medium: "bg-pink-100", textDark: "text-pink-900", button: colors.pink[400] },
-  { light: "bg-gray-50", medium: "bg-gray-100", textDark: "text-gray-900", button: colors.gray[400] },
+  { light: "bg-red-50", medium: "bg-red-100", textDark: "text-red-900" },
+  { light: "bg-yellow-50", medium: "bg-yellow-100", textDark: "text-yellow-900" },
+  { light: "bg-green-50", medium: "bg-green-100", textDark: "text-green-900" },
+  { light: "bg-blue-50", medium: "bg-blue-100", textDark: "text-blue-900" },
+  { light: "bg-indigo-50", medium: "bg-indigo-100", textDark: "text-indigo-900" },
+  { light: "bg-purple-50", medium: "bg-purple-100", textDark: "text-purple-900" },
+  { light: "bg-pink-50", medium: "bg-pink-100", textDark: "text-pink-900" },
+  { light: "bg-gray-50", medium: "bg-gray-100", textDark: "text-gray-900" },
 ]
 
 const cocktailRowTemplate = document.querySelector<HTMLTemplateElement>("template#cocktail_row")!;
@@ -86,11 +85,6 @@ for (const [i, recipe] of recipes.entries()) {
     label.insertAdjacentText("beforeend", ingredient.name)
     label.classList.add(c.textDark)
     label.querySelector<HTMLLabelElement>("div")!.classList.add(c.light)
-
-    const paths = ingredientComponent.querySelectorAll<HTMLElement>("button svg path")!
-    for (const p of Array.from(paths)) {
-      p.setAttribute("fill", c.button)
-    }
 
     ingredientComponent.querySelector<HTMLButtonElement>("button.up")!.onclick = (e) => changeAmount(e, true)
     ingredientComponent.querySelector<HTMLButtonElement>("button.down")!.onclick = (e) => changeAmount(e, false)
