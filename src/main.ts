@@ -54,6 +54,10 @@ const setFields = (recipe: Recipe) => {
   }
 }
 
+const parameterize = (text: string): string => {
+  return text.toLowerCase().replace(/\W/g, "-").replace(/-+/g, "-")
+}
+
 const slot = <T extends Element>(d: DocumentFragment, name: string): T => {
   return d.querySelector<T>(`[slot="${name}"]`)!
 }
@@ -65,7 +69,7 @@ const renderRecipe = (recipe: Recipe): Node => {
   heading.insertAdjacentText("beforeend", recipe.name)
   heading.style.color = recipe.color[900]
 
-  const id = recipe.name.toLowerCase().replace(/\W/g, "-").replace(/-+/g, "-")
+  const id = parameterize(recipe.name)
 
   slot<HTMLLinkElement>(row, "link").href = `#${id}`
 
@@ -89,9 +93,12 @@ const renderRecipe = (recipe: Recipe): Node => {
 const renderIngredient = (recipe: Recipe, ingredient: Ingredient): Node => {
   const ingredientComponent = ingredientTemplate.content.cloneNode(true) as DocumentFragment
 
+  const ingredientId = `${parameterize(recipe.name)}-${parameterize(ingredient.name)}`
+
   const label = slot<HTMLElement>(ingredientComponent, "label")!
   label.insertAdjacentText("beforeend", ingredient.name)
   label.style.color = recipe.color[900]
+  label.setAttribute("for", ingredientId)
 
   slot<HTMLElement>(ingredientComponent, "button-wrapper").style.backgroundColor = recipe.color[50]
 
@@ -102,6 +109,7 @@ const renderIngredient = (recipe: Recipe, ingredient: Ingredient): Node => {
   input.setAttribute("value", ingredient.amount.toString())
   input.setAttribute("data-ingredient", ingredient.name)
   input.setAttribute("data-recipe", recipe.name)
+  input.setAttribute("id", ingredientId)
 
   return ingredientComponent
 }
