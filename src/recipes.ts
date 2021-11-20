@@ -78,11 +78,11 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Gin & It",
-    directions: "Combine ingredients and stir with ice. Strain into a chilled glass and garnish with a twist of orange and a dash of orange bitters.",
+    directions: "Combine ingredients at room temperature. Strain into a glass and garnish with a twist of orange and a dash of orange bitters.",
     ingredients: [
       { name: "Serves", amount: 1 },
-      { name: "Gin", amount: 2 },
-      { name: "Sweet vermouth", amount: 1.5 },
+      { name: "Gin", amount: 1.5 },
+      { name: "Sweet vermouth", amount: 0.75 },
     ],
   },
 ].sort(() => 0.5 - Math.random());
