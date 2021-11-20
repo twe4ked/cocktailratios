@@ -74,7 +74,7 @@ for (const [i, recipe] of recipes.entries()) {
   const div = row.querySelector<HTMLElement>("div")!
   div.classList.add(c.medium)
   div.id = id
-  const directions = row.querySelector<HTMLSpanElement>(`[slot="directions"]`)!
+  const directions = row.querySelector<HTMLParagraphElement>(`[slot="directions"]`)!
   directions.textContent = recipe.directions
   directions.classList.add(c.textDark)
 
