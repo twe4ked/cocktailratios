@@ -60,14 +60,19 @@ const slot = <T extends Element>(d: DocumentFragment, name: string): T => {
 
 const renderRecipe = (recipe: Recipe): Node => {
   const row = cocktailRowTemplate.content.cloneNode(true) as DocumentFragment
+
   const heading = slot<HTMLElement>(row, "heading")
   heading.insertAdjacentText("beforeend", recipe.name)
   heading.style.color = recipe.color[900]
+
   const id = recipe.name.toLowerCase().replace(/\W/g, "-").replace(/-+/g, "-")
+
   slot<HTMLLinkElement>(row, "link").href = `#${id}`
+
   const div = slot<HTMLElement>(row, "cocktail-row")
   div.style.backgroundColor = recipe.color[100]
   div.id = id
+
   const directions = slot<HTMLElement>(row, "directions")
   directions.textContent = recipe.directions
   directions.style.color = recipe.color[900]
