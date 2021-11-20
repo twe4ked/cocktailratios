@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .rainbow:hover {
+    color: theme('colors.gray.100');
+    background: linear-gradient(
+      135deg,
+      theme('colors.red.600'),
+      theme('colors.yellow.600'),
+      theme('colors.green.600'),
+      theme('colors.blue.600'),
+      theme('colors.indigo.600'),
+      theme('colors.purple.600'),
+      theme('colors.pink.600'),
+      theme('colors.gray.600')
+    );
+  }
+}

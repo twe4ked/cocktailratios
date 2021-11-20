@@ -18,6 +18,10 @@ const colorClasses = [
 
 const cocktailRowTemplate = document.querySelector<HTMLTemplateElement>("template#cocktail_row")!;
 const ingredientTemplate = document.querySelector<HTMLTemplateElement>("template#ingredient")!;
+const headerTemplate = document.querySelector<HTMLTemplateElement>("template#header")!;
+
+const headerComponent = headerTemplate.content.cloneNode(true) as DocumentFragment
+app.appendChild(headerComponent);
 
 app.addEventListener("input", (event) => {
   const input = event.target! as HTMLInputElement
