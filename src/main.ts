@@ -62,6 +62,10 @@ const setFields = (recipe: Recipe) => {
   }
 }
 
+const slot = <T extends Element>(d: DocumentFragment, name: string): T => {
+  return d.querySelector<T>(`[slot="${name}"]`)!
+}
+
 for (const [i, recipe] of recipes.entries()) {
   let c = colorClasses[i % 8]
 
@@ -74,7 +78,7 @@ for (const [i, recipe] of recipes.entries()) {
   const div = row.querySelector<HTMLElement>("div")!
   div.classList.add(c.medium)
   div.id = id
-  const directions = row.querySelector<HTMLParagraphElement>(`[slot="directions"]`)!
+  const directions = slot(row, "directions")
   directions.textContent = recipe.directions
   directions.classList.add(c.textDark)
 
@@ -94,7 +98,7 @@ for (const [i, recipe] of recipes.entries()) {
     input.setAttribute("data-ingredient", ingredient.name)
     input.setAttribute("data-recipe", recipe.name)
 
-    row.querySelector<HTMLElement>(`[slot="ingredients"]`)!.appendChild(ingredientComponent);
+    slot(row, "ingredients").appendChild(ingredientComponent);
   }
 
   app.appendChild(row);
