@@ -39,30 +39,24 @@ app.addEventListener("input", (event) => {
   setFields(newRecipe)
 })
 
-app.addEventListener("click", (event) => {
-  if (event.target instanceof HTMLButtonElement) {
-    const up = event.target.classList.contains("up-button")
-    const down = event.target.classList.contains("down-button")
+const changeAmount = (event: MouseEvent, isUp: boolean) => {
+  const button = event.target! as HTMLButtonElement
+  const label = button.parentElement as HTMLLabelElement
+  const input = label.querySelector<HTMLInputElement>("input")!
+  const ingredientName = input.dataset["ingredient"]!
+  const recipeName = input.dataset["recipe"]
 
-    if (up || down) {
-      const label = event.target.parentElement as HTMLLabelElement
-      const input = label.querySelector<HTMLInputElement>("input")!
-      const ingredientName = input.dataset["ingredient"]!
-      const recipeName = input.dataset["recipe"]
-
-      const value = parseFloat(input.value)
-      const newValue = up ? Math.floor(value + 1) : Math.ceil(value - 1)
-      if (newValue <= 0) {
-        return
-      }
-
-      const recipe = recipes.filter((r) => r.name === recipeName)[0]!
-      const newRecipe = ratioRecipe(recipe, ingredientName, newValue)
-
-      setFields(newRecipe)
-    }
+  const value = parseFloat(input.value)
+  const newValue = isUp ? Math.floor(value + 1) : Math.ceil(value - 1)
+  if (newValue <= 0) {
+    return
   }
-})
+
+  const recipe = recipes.filter((r) => r.name === recipeName)[0]!
+  const newRecipe = ratioRecipe(recipe, ingredientName, newValue)
+
+  setFields(newRecipe)
+}
 
 const setFields = (recipe: Recipe) => {
   for (const ingredient of recipe.ingredients) {
@@ -99,6 +93,9 @@ for (const [i, recipe] of recipes.entries()) {
     for (const p of Array.from(paths)) {
       p.setAttribute("fill", c.button)
     }
+
+    ingredientComponent.querySelector<HTMLButtonElement>("button.up")!.onclick = (e) => changeAmount(e, true)
+    ingredientComponent.querySelector<HTMLButtonElement>("button.down")!.onclick = (e) => changeAmount(e, false)
 
     const input = ingredientComponent.querySelector<HTMLInputElement>("input")!
     input.setAttribute("value", ingredient.amount.toString())
