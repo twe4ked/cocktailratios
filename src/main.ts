@@ -7,9 +7,7 @@ const app = document.querySelector<HTMLDivElement>("#app")!
 const cocktailRowTemplate = document.querySelector<HTMLTemplateElement>("template#cocktail_row")!;
 const ingredientTemplate = document.querySelector<HTMLTemplateElement>("template#ingredient")!;
 const headerTemplate = document.querySelector<HTMLTemplateElement>("template#header")!;
-
-const headerComponent = headerTemplate.content.cloneNode(true) as DocumentFragment
-app.appendChild(headerComponent);
+const footerTemplate = document.querySelector<HTMLTemplateElement>("template#footer")!;
 
 app.addEventListener("input", (event) => {
   const input = event.target! as HTMLInputElement
@@ -114,8 +112,14 @@ const renderIngredient = (recipe: Recipe, ingredient: Ingredient): Node => {
   return ingredientComponent
 }
 
+const headerComponent = headerTemplate.content.cloneNode(true) as DocumentFragment
+app.appendChild(headerComponent);
+
 for (const recipe of recipes) {
   app.appendChild(
     renderRecipe(recipe)
   );
 }
+
+const footerComponent = footerTemplate.content.cloneNode(true) as DocumentFragment
+app.appendChild(footerComponent);
