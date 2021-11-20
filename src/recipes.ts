@@ -85,4 +85,35 @@ export const recipes: Recipe[] = [
       { name: "Sweet vermouth", amount: 0.75 },
     ],
   },
+  {
+    name: "Whiskey Sour",
+    directions: "Combine ingredients with ice, shake well, and strain into a chilled cocktail glass with ice.",
+    ingredients: [
+      { name: "Serves", amount: 3 },
+      { name: "Whiskey", amount: 6 },
+      { name: "Lemon juice", amount: 2.25 },
+      { name: "Simple syrup", amount: 2.25 },
+      { name: "Egg (worth of) white", amount: 1 },
+    ],
+  },
+  {
+    name: "Gimlet",
+    directions: "Combine ingredients with ice, shake well, and strain into a chilled cocktail glass with ice.",
+    ingredients: [
+      { name: "Serves", amount: 1 },
+      { name: "Gin", amount: 2 },
+      { name: "Lime juice", amount: 0.75 },
+      { name: "Simple syrup", amount: 0.75 },
+    ],
+  },
+  {
+    name: "Aperol Spritz",
+    directions: "Pour into a glass with ice and garnish with a slice of orange.",
+    ingredients: [
+      { name: "Serves", amount: 1 },
+      { name: "Prosecco", amount: 3 },
+      { name: "Aperol", amount: 2 },
+      { name: "Soda water", amount: 1 },
+    ],
+  },
 ].sort(() => 0.5 - Math.random());
