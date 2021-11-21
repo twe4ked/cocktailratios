@@ -4,6 +4,7 @@ let safelist = [
   ...colors.map((c) => `bg-${c}-100`),
   ...colors.map((c) => `bg-${c}-50`),
   ...colors.map((c) => `text-${c}-900`),
+  ...colors.map((c) => `focus:ring-${c}-600`),
 ]
 
 module.exports = {

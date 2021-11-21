@@ -101,6 +101,7 @@ const renderIngredient = (recipe: Recipe, ingredient: Ingredient): Node => {
   slot<HTMLButtonElement>(ingredientComponent, "down").onclick = (e) => changeAmount(e, false)
 
   const input = slot(ingredientComponent, "input")
+  input.classList.add(`focus:ring-${recipe.color}-600`)
   input.setAttribute("value", ingredient.amount.toString())
   input.setAttribute("data-ingredient", ingredient.name)
   input.setAttribute("data-recipe", recipe.name)
