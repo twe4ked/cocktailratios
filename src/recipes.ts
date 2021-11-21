@@ -1,6 +1,3 @@
-import colors from "tailwindcss/colors"
-import type { TailwindColorGroup } from "tailwindcss/tailwind-config"
-
 export type Ingredient = {
   name: string,
   amount: number
@@ -10,7 +7,7 @@ export type Recipe = {
   name: string,
   directions: string,
   ingredients: Ingredient[],
-  color: TailwindColorGroup,
+  color: string
 }
 
 export const ratioRecipe = (recipeName: string, name: string, amount: number): Recipe => {
@@ -32,7 +29,7 @@ export const recipes: Recipe[] = [
   {
     name: "Vesper Martini",
     directions: "Combine ingredients, shake well, and strain into a chilled cocktail glass. Garnish with a large piece of lemon peel.",
-    color: colors.gray,
+    color: "gray",
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Gin", amount: 3 },
@@ -43,7 +40,7 @@ export const recipes: Recipe[] = [
   {
     name: "Negroni",
     directions: "Combine ingredients, stir, then pour into a glass with a large piece of ice. Garnish with a slice of orange and a dash of bitters.",
-    color: colors.red,
+    color: "red",
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Gin", amount: 1 },
@@ -54,7 +51,7 @@ export const recipes: Recipe[] = [
   {
     name: "Mezcal Margarita",
     directions: "Combine ingredients, shake well, and strain into a chilled cocktail glass.",
-    color: colors.yellow,
+    color: "yellow",
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Mezcal", amount: 2 },
@@ -66,7 +63,7 @@ export const recipes: Recipe[] = [
   {
     name: "Tommy's Margarita",
     directions: "Combine, shake well, pour into a salt-rimmed glass with ice.",
-    color: colors.green,
+    color: "green",
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Tequila", amount: 2 },
@@ -77,7 +74,7 @@ export const recipes: Recipe[] = [
   {
     name: "Aviation",
     directions: "Combine ingredients, shake well, and strain into a chilled cocktail glass. Garnish with a flamed lemon peel.",
-    color: colors.purple,
+    color: "purple",
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Gin", amount: 2 },
@@ -89,7 +86,7 @@ export const recipes: Recipe[] = [
   {
     name: "Gin & It",
     directions: "Combine ingredients at room temperature. Strain into a glass and garnish with a twist of orange and a dash of orange bitters.",
-    color: colors.indigo,
+    color: "indigo",
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Gin", amount: 1.5 },
@@ -99,7 +96,7 @@ export const recipes: Recipe[] = [
   {
     name: "Whiskey Sour",
     directions: "Combine ingredients with ice, shake well, and strain into a chilled cocktail glass with ice.",
-    color: colors.yellow,
+    color: "yellow",
     ingredients: [
       { name: "Serves", amount: 3 },
       { name: "Whiskey", amount: 6 },
@@ -111,7 +108,7 @@ export const recipes: Recipe[] = [
   {
     name: "Gimlet",
     directions: "Combine ingredients with ice, shake well, and strain into a chilled cocktail glass with ice.",
-    color: colors.green,
+    color: "green",
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Gin", amount: 2 },
@@ -122,7 +119,7 @@ export const recipes: Recipe[] = [
   {
     name: "Aperol Spritz",
     directions: "Pour into a glass with ice and garnish with a slice of orange.",
-    color: colors.red,
+    color: "red",
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Prosecco", amount: 3 },
