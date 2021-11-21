@@ -68,15 +68,14 @@ const renderRecipe = (recipe: Recipe): Node => {
   const link = slot<HTMLLinkElement>(row, "link")
   link.href = `#${id}`
   link.insertAdjacentText("beforeend", recipe.name)
-  link.style.color = recipe.color[900]
 
   const div = slot<HTMLElement>(row, "cocktail-row")
   div.style.backgroundColor = recipe.color[100]
+  div.style.color = recipe.color[900]
   div.id = id
 
   const directions = slot<HTMLElement>(row, "directions")
   directions.textContent = recipe.directions
-  directions.style.color = recipe.color[900]
 
   for (const ingredient of recipe.ingredients) {
     slot(row, "ingredients").appendChild(
@@ -94,7 +93,6 @@ const renderIngredient = (recipe: Recipe, ingredient: Ingredient): Node => {
 
   const label = slot<HTMLElement>(ingredientComponent, "label")!
   label.insertAdjacentText("beforeend", ingredient.name)
-  label.style.color = recipe.color[900]
   label.setAttribute("for", ingredientId)
 
   slot<HTMLElement>(ingredientComponent, "button-wrapper").style.backgroundColor = recipe.color[50]
