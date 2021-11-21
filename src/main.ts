@@ -9,7 +9,7 @@ const ingredientTemplate = document.querySelector<HTMLTemplateElement>("template
 const headerTemplate = document.querySelector<HTMLTemplateElement>("template#header")!;
 const footerTemplate = document.querySelector<HTMLTemplateElement>("template#footer")!;
 
-app.addEventListener("input", (event) => {
+const update = (event: Event, setCurrentField: boolean) => {
   const input = event.target! as HTMLInputElement
   const ingredientName = input.dataset["ingredient"]!
   const recipeName = input.dataset["recipe"]!
@@ -24,25 +24,7 @@ app.addEventListener("input", (event) => {
 
   const newRecipe = ratioRecipe(recipeName, ingredientName, newValue)
 
-  setFields(newRecipe, ingredientName)
-})
-
-const onBlur = (event: FocusEvent) => {
-  const input = event.target! as HTMLInputElement
-  const ingredientName = input.dataset["ingredient"]!
-  const recipeName = input.dataset["recipe"]!
-
-  if (input.value.endsWith(".")) {
-    return
-  }
-  const newValue = parseFloat(input.value)
-  if (!newValue) {
-    return
-  }
-
-  const newRecipe = ratioRecipe(recipeName, ingredientName, newValue)
-
-  setFields(newRecipe, undefined)
+  setFields(newRecipe, setCurrentField ? undefined : ingredientName)
 }
 
 const changeAmount = (event: MouseEvent, isUp: boolean) => {
@@ -122,7 +104,8 @@ const renderIngredient = (recipe: Recipe, ingredient: Ingredient): Node => {
   slot<HTMLButtonElement>(ingredientComponent, "down").onclick = (e) => changeAmount(e, false)
 
   const input = slot<HTMLInputElement>(ingredientComponent, "input")
-  input.onblur = (e) => onBlur(e)
+  input.oninput = (e) => update(e, false)
+  input.onblur = (e) => update(e as Event, true)
   input.classList.add(`focus:ring-${recipe.color}-600`)
   input.setAttribute("value", ingredient.amount.toString())
   input.setAttribute("data-ingredient", ingredient.name)
