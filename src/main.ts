@@ -24,8 +24,26 @@ app.addEventListener("input", (event) => {
 
   const newRecipe = ratioRecipe(recipeName, ingredientName, newValue)
 
-  setFields(newRecipe)
+  setFields(newRecipe, ingredientName)
 })
+
+const onBlur = (event: FocusEvent) => {
+  const input = event.target! as HTMLInputElement
+  const ingredientName = input.dataset["ingredient"]!
+  const recipeName = input.dataset["recipe"]!
+
+  if (input.value.endsWith(".")) {
+    return
+  }
+  const newValue = parseFloat(input.value)
+  if (!newValue) {
+    return
+  }
+
+  const newRecipe = ratioRecipe(recipeName, ingredientName, newValue)
+
+  setFields(newRecipe, undefined)
+}
 
 const changeAmount = (event: MouseEvent, isUp: boolean) => {
   const button = event.target! as HTMLButtonElement
@@ -42,11 +60,14 @@ const changeAmount = (event: MouseEvent, isUp: boolean) => {
 
   const newRecipe = ratioRecipe(recipeName, ingredientName, newValue)
 
-  setFields(newRecipe)
+  setFields(newRecipe, undefined)
 }
 
-const setFields = (recipe: Recipe) => {
+const setFields = (recipe: Recipe, skipIngredientName: string | undefined) => {
   for (const ingredient of recipe.ingredients) {
+    if (ingredient.name === skipIngredientName) {
+      continue
+    }
     const input = app.querySelector<HTMLInputElement>(`[data-ingredient="${ingredient.name}"][data-recipe="${recipe.name}"]`)!
     input.value = ingredient.amount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })
   }
@@ -100,7 +121,8 @@ const renderIngredient = (recipe: Recipe, ingredient: Ingredient): Node => {
   slot<HTMLButtonElement>(ingredientComponent, "up").onclick = (e) => changeAmount(e, true)
   slot<HTMLButtonElement>(ingredientComponent, "down").onclick = (e) => changeAmount(e, false)
 
-  const input = slot(ingredientComponent, "input")
+  const input = slot<HTMLInputElement>(ingredientComponent, "input")
+  input.onblur = (e) => onBlur(e)
   input.classList.add(`focus:ring-${recipe.color}-600`)
   input.setAttribute("value", ingredient.amount.toString())
   input.setAttribute("data-ingredient", ingredient.name)
