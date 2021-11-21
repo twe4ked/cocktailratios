@@ -115,7 +115,7 @@ const renderIngredient = (recipe: Recipe, ingredient: Ingredient): Node => {
 const headerComponent = headerTemplate.content.cloneNode(true) as DocumentFragment
 app.appendChild(headerComponent);
 
-for (const recipe of recipes) {
+for (const recipe of recipes.sort((a, b) => a.name.localeCompare(b.name))) {
   app.appendChild(
     renderRecipe(recipe)
   );

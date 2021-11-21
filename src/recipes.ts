@@ -130,4 +130,4 @@ export const recipes: Recipe[] = [
       { name: "Soda Water", amount: 1 },
     ],
   },
-].sort((a, b) => a.name.localeCompare(b.name))
+]
