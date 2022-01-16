@@ -38,6 +38,17 @@ export const recipes: Recipe[] = [
     ],
   },
   {
+    name: "Martini (Dirty)",
+    directions: "Combine ingredients, stir, and strain into a chilled cocktail glass. Garnish with an olive.",
+    color: "gray",
+    ingredients: [
+      { name: "Serves", amount: 1 },
+      { name: "Vodka", amount: 2 },
+      { name: "Dry Vermouth", amount: 0.25 },
+      { name: "Olive brine", amount: 0.25 },
+    ],
+  },
+  {
     name: "Negroni",
     directions: "Combine ingredients, stir, then pour into a glass with a large piece of ice. Garnish with a slice of orange and a dash of bitters.",
     color: "red",
