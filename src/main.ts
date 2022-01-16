@@ -56,7 +56,7 @@ const setFields = (recipe: Recipe, skipIngredientName: string | undefined) => {
 }
 
 const parameterize = (text: string): string => {
-  return text.toLowerCase().replace(/\W/g, "-").replace(/-+/g, "-")
+  return text.toLowerCase().replace(/\W/g, "-").replace(/-+/g, "-").replace(/-$/, "")
 }
 
 const slot = <T extends Element>(d: DocumentFragment, name: string): T => {
