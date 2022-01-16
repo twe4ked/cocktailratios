@@ -115,7 +115,30 @@ const renderIngredient = (recipe: Recipe, ingredient: Ingredient): Node => {
   return ingredientComponent
 }
 
+// https://stackoverflow.com/a/15252131
+const fuzzySearch = (hay: string, searchTerm: string): boolean => {
+  hay = hay.toLowerCase()
+  searchTerm = searchTerm.toLowerCase();
+  var i = 0, n = -1, l
+  for (; l = searchTerm[i++];) {
+    if (!~(n = hay.indexOf(l, n + 1))) {
+      return false
+    }
+  }
+  return true
+}
+
+const search = (event: Event) => {
+  const input = event.target! as HTMLInputElement
+  for (const recipe of recipes) {
+    const id = parameterize(recipe.name)
+    const element = document.getElementById(id)!
+    element.style.display = fuzzySearch(recipe.name, input.value) ? "block" : "none";
+  }
+}
+
 const headerComponent = headerTemplate.content.cloneNode(true) as DocumentFragment
+slot<HTMLInputElement>(headerComponent, "search").oninput = search
 app.appendChild(headerComponent);
 
 for (const recipe of recipes.sort((a, b) => a.name.localeCompare(b.name))) {
