@@ -43,7 +43,7 @@ export const recipes: Recipe[] = [
     color: "gray",
     ingredients: [
       { name: "Serves", amount: 1 },
-      { name: "Vodka", amount: 2 },
+      { name: "Vodka or Gin", amount: 2 },
       { name: "Dry Vermouth", amount: 0.25 },
       { name: "Olive brine", amount: 0.25 },
     ],
