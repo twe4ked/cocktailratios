@@ -28,7 +28,7 @@ export const ratioRecipe = (recipeName: string, name: string, amount: number): R
 export const recipes: Recipe[] = [
   {
     name: "Vesper Martini",
-    directions: "Combine ingredients, shake well, and strain into a chilled cocktail glass. Garnish with a large piece of lemon peel.",
+    directions: "Combine ingredients, stir (20s), and strain into a chilled cocktail glass. Garnish with a large piece of lemon peel.",
     color: "gray",
     ingredients: [
       { name: "Serves", amount: 1 },
