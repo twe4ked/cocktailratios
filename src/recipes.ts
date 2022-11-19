@@ -143,6 +143,7 @@ export const recipes: Recipe[] = [
     directions: "Combine and shake.",
     color: "yellow",
     ingredients: [
+      { name: "Serves", amount: 1 },
       { name: "Gin", amount: 1 },
       { name: "Advocaat", amount: 1 },
       { name: "Cointreau", amount: 0.66 },
