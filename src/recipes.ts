@@ -151,4 +151,15 @@ export const recipes: Recipe[] = [
       { name: "Soda Water", amount: 1 },
     ],
   },
+  {
+    name: "Harvey Wallbanger",
+    directions: "Combine and stir.",
+    color: "red",
+    ingredients: [
+      { name: "Serves", amount: 1 },
+      { name: "Vodka", amount: 1 },
+      { name: "Orange Juice", amount: 3 },
+      { name: "Galliano", amount: 0.5 },
+    ],
+  },
 ]
