@@ -138,4 +138,16 @@ export const recipes: Recipe[] = [
       { name: "Soda Water", amount: 1 },
     ],
   },
+  {
+    name: "Fluffy Duck",
+    directions: "Combine and shake.",
+    color: "yellow",
+    ingredients: [
+      { name: "Gin", amount: 1 },
+      { name: "Advocaat", amount: 1 },
+      { name: "Cointreau", amount: 0.66 },
+      { name: "Orange Juice", amount: 0.66 },
+      { name: "Soda Water", amount: 1 },
+    ],
+  },
 ]
