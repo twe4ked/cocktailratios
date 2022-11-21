@@ -1,3 +1,5 @@
+type Color = "red" | "yellow" | "green" | "blue" | "indigo" | "purple" | "pink" | "gray"
+
 export type Ingredient = {
   name: string,
   amount: number
@@ -7,7 +9,7 @@ export type Recipe = {
   name: string,
   directions: string,
   ingredients: Ingredient[],
-  color: string
+  color: Color
 }
 
 export const ratioRecipe = (recipeName: string, name: string, amount: number): Recipe => {
