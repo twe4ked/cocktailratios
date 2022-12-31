@@ -165,16 +165,16 @@ export const recipes: Recipe[] = [
     ],
   },
   {
-    name: "Corina's Mojito",
-    directions: "Combine and shake with ice.",
-    color: "red",
+    name: "Mojito",
+    directions: "Combine and shake with ice or muddle.",
+    color: "green",
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "White Rum", amount: 2 },
       { name: "Lime Juice", amount: 1 },
-      { name: "Sugar syrup", amount: 0.5 },
-      { name: "Mint leaves", amount: 5 },
-
+      { name: "Soda Water", amount: 1 },
+      { name: "Sugar Syrup", amount: 0.5 },
+      { name: "Mint Leaves", amount: 5 },
     ],
   },
 ]
