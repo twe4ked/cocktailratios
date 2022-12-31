@@ -118,7 +118,7 @@ const renderIngredient = (recipe: Recipe, ingredient: Ingredient): Node => {
 // https://stackoverflow.com/a/15252131
 const fuzzySearch = (hay: string, searchTerm: string): boolean => {
   hay = hay.toLowerCase()
-  searchTerm = searchTerm.toLowerCase();
+  searchTerm = searchTerm.toLowerCase().trim();
   var i = 0, n = -1, l
   for (; l = searchTerm[i++];) {
     if (!~(n = hay.indexOf(l, n + 1))) {
