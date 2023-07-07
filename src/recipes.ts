@@ -177,4 +177,15 @@ export const recipes: Recipe[] = [
       { name: "Mint Leaves", amount: 5 },
     ],
   },
+  {
+    name: "White Russian",
+    directions: "Add Kahlua and vodka to a glass with ice, stir. Layer the cream on top.",
+    color: "gray",
+    ingredients: [
+      { name: "Serves", amount: 1 },
+      { name: "Kahlua", amount: 1 },
+      { name: "Vodka", amount: 1 },
+      { name: "Heavy cream (or milk)", amount: 1 },
+    ],
+  },
 ]
