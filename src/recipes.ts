@@ -28,6 +28,17 @@ export const ratioRecipe = (recipeName: string, name: string, amount: number): R
 }
 
 export const recipes: Recipe[] = [
+   {
+    name: "Espresso Martini",
+    directions: "Combine ingredients in cocktail shaker with 1/3rd ice, shake really hard, and strain into a chilled cocktail glass. Garnish with a coffee bean.",
+    color: "gray",
+    ingredients: [
+      { name: "Serves", amount: 1 },
+      { name: "Coffee Liqueur", amount: 1 },
+      { name: "Vodka", amount: 1 },
+      { name: "Espresso", amount: 1 }
+    ],
+  },
   {
     name: "Vesper Martini",
     directions: "Combine ingredients, stir (20s), and strain into a chilled cocktail glass. Garnish with a large piece of lemon peel.",
