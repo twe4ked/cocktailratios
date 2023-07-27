@@ -1,4 +1,4 @@
-hytype Color = "red" | "yellow" | "green" | "blue" | "indigo" | "purple" | "pink" | "gray"
+type Color = "red" | "yellow" | "green" | "blue" | "indigo" | "purple" | "pink" | "gray"
 
 export type Ingredient = {
   name: string,
