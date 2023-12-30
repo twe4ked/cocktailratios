@@ -47,7 +47,7 @@ export const recipes: Recipe[] = [
       { name: "Serves", amount: 1 },
       { name: "Gin", amount: 1.5 },
       { name: "Vodka", amount: 0.5 },
-      { name: "Lillet Blanc or Dry Vermouth", amount: 0.25 },
+      { name: "Lillet Blanc or Dry Vermouth", amount: 0.125 },
     ],
   },
   {
