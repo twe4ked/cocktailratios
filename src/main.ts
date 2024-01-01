@@ -128,17 +128,32 @@ const fuzzySearch = (hay: string, searchTerm: string): boolean => {
   return true
 }
 
-const search = (event: Event) => {
+const onSearch = (event: Event) => {
   const input = event.target! as HTMLInputElement
+  const query = input.value
+
+  const url = new URL(location.href);
+  if (query.length === 0) {
+    url.searchParams.delete("q")
+  } else {
+    url.searchParams.set("q", query);
+  }
+  history.replaceState(null, "", url);
+
+  search(query)
+}
+
+const search = (query: string) => {
   for (const recipe of recipes) {
     const id = parameterize(recipe.name)
     const element = document.getElementById(id)!
-    element.style.display = fuzzySearch(recipe.name, input.value) ? "block" : "none";
+    element.style.display = fuzzySearch(recipe.name, query) ? "block" : "none";
   }
 }
 
 const headerComponent = headerTemplate.content.cloneNode(true) as DocumentFragment
-slot<HTMLInputElement>(headerComponent, "search").oninput = search
+const searchInput = slot<HTMLInputElement>(headerComponent, "search")
+searchInput.oninput = onSearch
 app.appendChild(headerComponent);
 
 for (const recipe of recipes.sort((a, b) => a.name.localeCompare(b.name))) {
@@ -149,3 +164,10 @@ for (const recipe of recipes.sort((a, b) => a.name.localeCompare(b.name))) {
 
 const footerComponent = footerTemplate.content.cloneNode(true) as DocumentFragment
 app.appendChild(footerComponent);
+
+let params = (new URL(document.location.toString())).searchParams;
+let query = params.get("q");
+if (query) {
+  searchInput.value = query
+  search(query)
+}
