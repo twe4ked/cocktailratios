@@ -49,7 +49,15 @@
               <span class="opacity-0 group-hover:opacity-100 absolute -left-6 bottom-0 text-2xl">#</span>
             </a>
           </h1>
-          <p slot="directions" class="my-4"></p>
+          <div class="lg:flex flex-row">
+            <div class="flex-grow">
+              <p slot="directions" class="my-4"></p>
+            </div>
+            <div slot="content" class="mb-4" hidden>
+              <p></p>
+            </div>
+            <button class="mb-4" slot="more-button">+&nbsp;More</button>
+          </div>
           <div slot="ingredients" class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"></div>
         </div>
       </div>

@@ -8,6 +8,7 @@ export type Ingredient = {
 export type Recipe = {
   name: string,
   directions: string,
+  content: string | null,
   ingredients: Ingredient[],
   color: Color
 }
@@ -31,6 +32,7 @@ export const recipes: Recipe[] = [
    {
     name: "Espresso Martini",
     directions: "Combine ingredients in cocktail shaker with 1/3rd ice, shake really hard, and strain into a chilled cocktail glass. Garnish with a coffee bean.",
+    content: null,
     color: "gray",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -42,6 +44,7 @@ export const recipes: Recipe[] = [
   {
     name: "Vesper Martini",
     directions: "Combine ingredients, stir (20s), and strain into a chilled cocktail glass. Garnish with a large piece of lemon peel.",
+    content: "Err on the lower side for the Lillet.",
     color: "gray",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -53,6 +56,7 @@ export const recipes: Recipe[] = [
   {
     name: "Martini (Dirty)",
     directions: "Combine ingredients, stir, and strain into a chilled cocktail glass. Garnish with an olive.",
+    content: null,
     color: "gray",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -64,6 +68,7 @@ export const recipes: Recipe[] = [
   {
     name: "Negroni",
     directions: "Combine ingredients, stir, then pour into a glass with a large piece of ice. Garnish with a slice of orange and a dash of bitters.",
+    content: null,
     color: "red",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -75,6 +80,7 @@ export const recipes: Recipe[] = [
   {
     name: "Mezcal Margarita",
     directions: "Combine ingredients, shake well, and strain into a chilled cocktail glass.",
+    content: null,
     color: "yellow",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -87,6 +93,7 @@ export const recipes: Recipe[] = [
   {
     name: "Tommy's Margarita",
     directions: "Combine, shake well, pour into a salt-rimmed glass with ice.",
+    content: null,
     color: "green",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -98,6 +105,7 @@ export const recipes: Recipe[] = [
   {
     name: "Aviation",
     directions: "Combine ingredients, shake well, and strain into a chilled cocktail glass. Garnish with a flamed lemon peel.",
+    content: null,
     color: "purple",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -110,6 +118,7 @@ export const recipes: Recipe[] = [
   {
     name: "Gin & It",
     directions: "Combine ingredients at room temperature. Strain into a glass and garnish with a twist of orange and a dash of orange bitters.",
+    content: null,
     color: "indigo",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -120,6 +129,7 @@ export const recipes: Recipe[] = [
   {
     name: "Whiskey Sour",
     directions: "Combine ingredients with ice, shake well, and strain into a chilled cocktail glass with ice.",
+    content: null,
     color: "yellow",
     ingredients: [
       { name: "Serves", amount: 3 },
@@ -132,6 +142,7 @@ export const recipes: Recipe[] = [
   {
     name: "Gimlet",
     directions: "Combine ingredients with ice, shake well, and strain into a chilled cocktail glass with ice.",
+    content: null,
     color: "green",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -143,6 +154,7 @@ export const recipes: Recipe[] = [
   {
     name: "Aperol Spritz",
     directions: "Pour into a glass with ice and garnish with a slice of orange.",
+    content: null,
     color: "red",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -154,6 +166,7 @@ export const recipes: Recipe[] = [
   {
     name: "Fluffy Duck",
     directions: "Combine and shake.",
+    content: null,
     color: "yellow",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -167,6 +180,7 @@ export const recipes: Recipe[] = [
   {
     name: "Harvey Wallbanger",
     directions: "Combine and stir.",
+    content: null,
     color: "red",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -178,6 +192,7 @@ export const recipes: Recipe[] = [
   {
     name: "Mojito",
     directions: "Combine and shake with ice or muddle.",
+    content: "Suggest using Malibu Rum for the coconut flavour.",
     color: "green",
     ingredients: [
       { name: "Serves", amount: 1 },
@@ -191,6 +206,7 @@ export const recipes: Recipe[] = [
   {
     name: "White Russian",
     directions: "Add Kahlua and vodka to a glass with ice, stir. Layer the cream on top.",
+    content: null,
     color: "gray",
     ingredients: [
       { name: "Serves", amount: 1 },

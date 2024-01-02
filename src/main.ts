@@ -80,6 +80,19 @@ const renderRecipe = (recipe: Recipe): Node => {
   const directions = slot<HTMLElement>(row, "directions")
   directions.textContent = recipe.directions
 
+  const content = slot<HTMLElement>(row, "content")
+
+  const moreButton = slot<HTMLElement>(row, "more-button")!
+  moreButton.onclick = () => content.hidden = !content.hidden
+
+  if (recipe.content) {
+    const contentP = content.querySelector<HTMLElement>("p")!
+    contentP.textContent = recipe.content
+  } else {
+    moreButton.remove()
+    content.remove()
+  }
+
   for (const ingredient of recipe.ingredients) {
     slot(row, "ingredients").appendChild(
       renderIngredient(recipe, ingredient)
