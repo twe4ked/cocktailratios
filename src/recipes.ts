@@ -148,7 +148,7 @@ export const recipes: Recipe[] = [
       { name: "Serves", amount: 1 },
       { name: "Gin", amount: 2 },
       { name: "Lime Juice", amount: 0.75 },
-      { name: "Simple Syrup", amount: 0.75 },
+      { name: "Simple Syrup", amount: 0.5 },
     ],
   },
   {
