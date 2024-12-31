@@ -215,4 +215,16 @@ export const recipes: Recipe[] = [
       { name: "Heavy cream (or milk)", amount: 1 },
     ],
   },
+  {
+    name: "Limencello Spritz"
+    directions: "Fill a large wine glass with ice and then layer ingredients. Garnish with a slice of Orange.",
+    content: null,
+    color: "yellow",
+    ingredients: [
+      { name: "Serves", amount: 1 },
+      { name: "Prosecco", amount: 3 },
+      { name: "Limencello", amount: 2 },
+      { name: "Soda", amount: 1 },
+    ]
+  }
 ]
