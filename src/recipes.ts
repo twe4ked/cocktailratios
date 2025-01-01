@@ -216,7 +216,7 @@ export const recipes: Recipe[] = [
     ],
   },
   {
-    name: "Limencello Spritz"
+    name: "Limencello Spritz",
     directions: "Fill a large wine glass with ice and then layer ingredients. Garnish with a slice of Orange.",
     content: null,
     color: "yellow",
