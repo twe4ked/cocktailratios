@@ -238,5 +238,18 @@ export const recipes: Recipe[] = [
       { name: "Crème de Cacao (dark)", amount: 1 },
       { name: "Cream", amount: 1 },
     ]
+  },
+  {
+    name: "Cable Car",
+    directions: "Shake all ingredients with ice. Garnish with cinnamon sugar rim and orange twist.",
+    content: null,
+    color: "green",
+    ingredients: [
+      { name: "Serves", amount: 1 },
+      { name: "Spiced rum", amount: 1.5 },
+      { name: "Cointreau or triple sec", amount: 0.75 },
+      { name: "Lemon juice", amount: 1 },
+      { name: "Sugar syrup", amount: 0.5 },
+    ]
   }
 ]
