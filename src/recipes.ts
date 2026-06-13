@@ -110,9 +110,9 @@ export const recipes: Recipe[] = [
     ingredients: [
       { name: "Serves", amount: 1 },
       { name: "Gin", amount: 2 },
-      { name: "Maraschino Liqueur", amount: 0.25 },
+      { name: "Maraschino Liqueur", amount: 0.375 },
       { name: "Crème De Violette Liqueur", amount: 0.25 },
-      { name: "Lemon Juice", amount: 0.25 },
+      { name: "Lemon Juice", amount: 0.75 },
     ],
   },
   {
